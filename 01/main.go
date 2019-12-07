@@ -28,12 +28,7 @@ func main() {
 	// open the intput file
 	inputFile, _ := os.Open("input.txt")
 	defer inputFile.Close()
-	outputFile, _ := os.Create("output.txt")
-	defer outputFile.Close()
-
-	// make scanner and writer
 	scanner := bufio.NewScanner(inputFile)
-	writer := bufio.NewWriter(outputFile)
 
 	// total fuel required
 	totalFuel := 0
@@ -51,10 +46,5 @@ func main() {
 	}
 
 	// write answer
-	bytesWritten, err := writer.WriteString(strconv.Itoa(totalFuel) + "\n")
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Bytes Written: ", bytesWritten)
-	writer.Flush()
+	fmt.Printf("Solution: %v\n", strconv.Itoa(totalFuel))
 }
